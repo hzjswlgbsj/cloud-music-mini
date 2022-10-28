@@ -36,6 +36,9 @@
     ]
   },
   "devDependencies": {
+    "react-router": "^6.4.2",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^6.4.2",
     "styled-components": "^5.3.6"
   }
 }
