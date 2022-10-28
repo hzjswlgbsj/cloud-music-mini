@@ -17,6 +17,10 @@ const router = createBrowserRouter([
         element: <Recommend />
       },
       {
+        path: '/recommend',
+        element: <Recommend />
+      },
+      {
         path: "/singers",
         element: <Singers />
       },
