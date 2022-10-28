@@ -36,9 +36,15 @@
     ]
   },
   "devDependencies": {
+    "immutable": "^4.1.0",
+    "react-redux": "^8.0.4",
     "react-router": "^6.4.2",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^6.4.2",
-    "styled-components": "^5.3.6"
+    "redux": "^4.2.0",
+    "redux-immutable": "^4.0.0",
+    "redux-thunk": "^2.4.1",
+    "styled-components": "^5.3.6",
+    "swiper": "^8.4.4"
   }
 }
