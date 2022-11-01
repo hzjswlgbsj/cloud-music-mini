@@ -9,7 +9,7 @@ const ScrollContainer = styled.div`
   overflow: hidden;
 `
 
-const Scroll = forwardRef ((props, ref) => {
+const Scroll = forwardRef((props, ref) => {
   const [bScroll, setBScroll] = useState ();
 
   const scrollContaninerRef = useRef ();
