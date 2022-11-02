@@ -5,7 +5,7 @@ import { IconStyle } from './assets/iconfont/iconfont';
 import { GlobalStyle } from './style';
 import router from './router';
 import { RouterProvider } from 'react-router-dom';
-import store from './store/index'
+import store from './store'
 
 function App () {
   return (
