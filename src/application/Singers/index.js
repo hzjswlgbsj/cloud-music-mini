@@ -20,9 +20,8 @@ import Loading from '../../baseUI/loading';
 function Singers(props) {
   let [category, setCategory] = useState('');
   let [alpha, setAlpha] = useState('');
-
+  
   const { singerList, enterLoading, pullUpLoading, pullDownLoading, pageCount } = props;
-
   const { getHotSingerDispatch, updateDispatch, pullDownRefreshDispatch, pullUpRefreshDispatch } = props;
 
   useEffect(() => {
@@ -79,9 +78,9 @@ function Singers(props) {
       <ListContainer>
         <Scroll
           pullUp={ handlePullUp }
-          pullDown = { handlePullDown }
-          pullUpLoading = { pullUpLoading }
-          pullDownLoading = { pullDownLoading }
+          pullDown={ handlePullDown }
+          pullUpLoading={ pullUpLoading }
+          pullDownLoading={ pullDownLoading }
           onScroll={forceCheck}
         >
           { renderSingerList() }
