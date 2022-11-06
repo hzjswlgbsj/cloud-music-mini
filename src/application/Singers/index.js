@@ -17,6 +17,11 @@ import {
 import {connect} from 'react-redux';
 import Loading from '../../baseUI/loading';
 
+/**
+ * my name is sixty
+ * @param {*} props 
+ * @returns 
+ */
 function Singers(props) {
   let [category, setCategory] = useState('');
   let [alpha, setAlpha] = useState('');
