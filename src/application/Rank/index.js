@@ -11,7 +11,7 @@ import {
 import Scroll from '../../baseUI/scroll/index';
 import { EnterLoading } from './../Singers/style';
 import { filterIndex, filterIdx } from '../../api/utils';
-import { renderRoutes } from 'react-router-config';
+import { Outlet } from "react-router-dom";
 
 function Rank(props) {
   const { rankList:list, loading } = props;
@@ -80,7 +80,7 @@ function Rank(props) {
           { loading ? <EnterLoading><Loading></Loading></EnterLoading> : null }
         </div>
       </Scroll> 
-      {renderRoutes(props.route.routes)}
+      <Outlet />
     </Container>
     );
 }
