@@ -12,7 +12,7 @@ const HeaderContainer = styled.div`
   z-index: 100;
   display: flex;
   line-height: 40px;
-  /* color: ${style["font-color-light"]}; */
+  color: ${style["font-color-light"]};
   .back{
     margin-right: 5px;
     font-size: 20px;
@@ -28,7 +28,7 @@ const Header = React.forwardRef((props, ref) => {
   const { handleClick, title, isMarquee } = props;
   return (
     <HeaderContainer ref={ref}>
-      <i className="iconfont back"  onClick={handleClick}>&#xe655;</i>
+      <i className="iconfont back" onClick={handleClick}>&#xe655;</i>
       {
         // eslint-disable-next-line
         isMarquee ? <marquee><h1>{title}</h1></marquee>:
