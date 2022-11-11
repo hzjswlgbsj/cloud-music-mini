@@ -81,7 +81,7 @@ function Singer(props) {
         
         <CollectButton ref={collectButton}>
           <i className="iconfont">&#xe62d;</i>
-          <span className="text"> 收藏 </span>
+          <span className="text">收藏</span>
         </CollectButton>
 
         <BgLayer ref={layer}></BgLayer>
