@@ -10,10 +10,11 @@ import {
 } from './style';
 import Scroll from '../../baseUI/scroll/index';
 import { EnterLoading } from './../Singers/style';
-import { filterIndex, filterIdx } from '../../api/utils';
-import { Outlet } from "react-router-dom";
+import { filterIndex } from '../../api/utils';
+import { Outlet, useNavigate } from "react-router-dom";
 
 function Rank(props) {
+  const navigate = useNavigate();
   const { rankList:list, loading } = props;
   const { getRankListDataDispatch } = props;
   let rankList = list ? list.toJS() : [];
@@ -29,13 +30,6 @@ function Rank(props) {
   let officialList = rankList.slice(0, globalStartIndex);
   let globalList = rankList.slice(globalStartIndex);
 
-  const enterDetail = (name) => {
-      const idx = filterIdx(name);
-      if(idx === null) {
-        alert("暂无相关数据");
-        return;
-      } 
-  }
   const renderSongList = (list) => {
     return list.length ? (
       <SongList>
@@ -53,7 +47,7 @@ function Rank(props) {
        {
         list.map((item) => {
           return (
-            <ListItem key={item.coverImgId} tracks={item.tracks} onClick={() => enterDetail(item.name)}>
+            <ListItem key={item.coverImgId} tracks={item.tracks} onClick={() => navigate(`/rank/${item.id}`)}>
               <div className="img_wrapper">
                 <img src={item.coverImgUrl} alt=""/>
                 <div className="decorate"></div>

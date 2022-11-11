@@ -6,6 +6,7 @@ import Recommend from '../application/Recommend';
 import Singers from '../application/Singers';
 import Rank from '../application/Rank';
 import Album from '../application/Album';
+import Singer from '../application/Singer';
 
 const router = createBrowserRouter([
   {
@@ -29,11 +30,23 @@ const router = createBrowserRouter([
       },
       {
         path: "singers",
-        element: <Singers />
+        element: <Singers />,
+        children: [
+          {
+            path: "/singers/:id",
+            element: <Singer />
+          }
+        ]
       },
       {
         path: "rank",
-        element: <Rank />
+        element: <Rank />,
+        children: [
+          {
+            path: "/rank/:id",
+            element: <Album />
+          }
+        ]
       }
     ]
   }

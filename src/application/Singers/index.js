@@ -16,16 +16,12 @@ import {
 } from './store/actionCreators';
 import {connect} from 'react-redux';
 import Loading from '../../baseUI/loading';
+import { Outlet, useNavigate } from 'react-router-dom';
 
-/**
- * my name is sixty
- * @param {*} props 
- * @returns 
- */
 function Singers(props) {
   let [category, setCategory] = useState('');
   let [alpha, setAlpha] = useState('');
-  
+  const navigate = useNavigate();
   const { singerList, enterLoading, pullUpLoading, pullDownLoading, pageCount } = props;
   const { getHotSingerDispatch, updateDispatch, pullDownRefreshDispatch, pullUpRefreshDispatch } = props;
 
@@ -59,7 +55,7 @@ function Singers(props) {
         {
           list.map((item, index) => {
             return (
-              <ListItem key={item.accountId+""+index}>
+              <ListItem key={item.accountId+""+index} onClick={() => navigate(`/singers/${item.id}`) }>
                 <div className="img_wrapper">
                   <LazyLoad placeholder={<img width="100%" height="100%" src={require('./singer.png')} alt="music"/>}>
                     <img src={`${item.picUrl}?param=300x300`} width="100%" height="100%" alt="music"/>
@@ -91,6 +87,7 @@ function Singers(props) {
           { renderSingerList() }
         </Scroll>
         <Loading show={enterLoading}></Loading>
+        <Outlet />
       </ListContainer>
     </div>
   )
