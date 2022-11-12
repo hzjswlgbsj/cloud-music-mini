@@ -93,6 +93,7 @@ function Singers(props) {
   )
 }
 
+// 映射 Redux 全局的 state 到组件的 props 上
 const mapStateToProps = (state) => ({
   singerList: state.getIn(['singers', 'singerList']),
   enterLoading: state.getIn(['singers', 'enterLoading']),
@@ -101,6 +102,7 @@ const mapStateToProps = (state) => ({
   pageCount: state.getIn(['singers', 'pageCount'])
 });
 
+// 映射 dispatch 到 props 上
 const mapDispatchToProps = (dispatch) => {
   return {
     getHotSingerDispatch() {

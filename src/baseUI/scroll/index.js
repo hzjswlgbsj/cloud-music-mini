@@ -32,8 +32,8 @@ export const PullDownLoading = styled.div`
 `;
 
 const Scroll = forwardRef((props, ref) => {
-  const [bScroll, setBScroll] = useState ();
-  const scrollContaninerRef = useRef ();
+  const [bScroll, setBScroll] = useState();
+  const scrollContaninerRef = useRef();
   const { direction, click, refresh,  bounceTop, bounceBottom } = props;
   const { pullUp, pullDown, onScroll, pullUpLoading, pullDownLoading } = props;
   const PullUpdisplayStyle = pullUpLoading ? {display: ""} : { display:"none" };
