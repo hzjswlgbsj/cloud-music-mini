@@ -21,9 +21,9 @@ function MiniPlayer(props) {
         miniPlayerRef.current.style.display = "none";
       }}
     >
-      <MiniPlayerContainer ref={miniPlayerRef} onClick={() => toggleFullScreen(true)}>
+      <MiniPlayerContainer ref={miniPlayerRef}>
         <div className="icon">
-          <div className="imgWrapper">
+          <div className="imgWrapper" onClick={() => toggleFullScreen(true)}>
             <img className={`play ${playing ? "": "pause"}`} src={song.al.picUrl} width="40" height="40" alt="img"/>
           </div>
         </div>

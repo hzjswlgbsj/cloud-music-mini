@@ -94,7 +94,6 @@ function NormalPlayer(props) {
     const cdWrapperDom = cdWrapperRef.current;
     cdWrapperDom.style.transition = "all 0.4s";
     const { x, y, scale } = _getPosAndScale();
-    console.log(111111111, x, y, scale)
     cdWrapperDom.style[transform] = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
   };
 
@@ -140,10 +139,7 @@ function NormalPlayer(props) {
         </div>
         <div className="background layer"></div>
         <Top className="top">
-          <div className="back" onClick={() => {
-            console.log(222222)
-            toggleFullScreen(false)
-          }}>
+          <div className="back"  onClick={() => toggleFullScreen(false)}>
             <i className="iconfont icon-back">&#xe662;</i>
           </div>
           <h1 className="title">{song.name}</h1>

@@ -1,5 +1,5 @@
 // 扩大可点击区域
-const extendClick = () => {
+const extendClick =() => {
   return `
     position: relative;
     &:before {
@@ -10,7 +10,7 @@ const extendClick = () => {
   `
 }
 // 一行文字溢出部分用... 代替
-const noWrap = () => {
+const noWrap =() => {
   return `
     text-overflow: ellipsis;
     overflow: hidden;
@@ -20,7 +20,7 @@ const noWrap = () => {
 
 const styles = {
   'theme-color': '#d44439',
-  'theme-color-shadow': 'rgba (212, 68, 57, .5)',
+  'theme-color-shadow': 'rgba(212, 68, 57, .5)',
   'font-color-light': '#f1f1f1',
   'font-color-desc': '#2E3030',
   'font-color-desc-v2': '#bba8a8',// 略淡
@@ -31,7 +31,7 @@ const styles = {
   'font-size-ll': '18px',
   "border-color": '#e4e4e4',
   'background-color': '#f2f3f4',
-  'background-color-shadow': 'rgba (0, 0, 0, 0.3)',
+  'background-color-shadow': 'rgba(0, 0, 0, 0.3)',
   'highlight-background-color': '#fff',
   extendClick,
   noWrap
