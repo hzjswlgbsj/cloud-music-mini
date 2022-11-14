@@ -1,40 +1,55 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { CSSTransition } from 'react-transition-group';
-import { Container, ImgWrapper, SongListWrapper, CollectButton, BgLayer } from './style';
-import { useNavigate, useParams } from 'react-router-dom';
-import Header from '../../components/header';
-import Scroll from "../../baseUI/scroll";
-import Loading from "../../baseUI/loading";
-import SongsList from "../SongList";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { CSSTransition } from "react-transition-group";
+import { Container } from "./style";
 import { HEADER_HEIGHT } from "./../../api/config";
-import {connect} from 'react-redux';
-import { 
-  getSingerInfo, 
-  changeEnterLoading, 
-} from './store/actionCreators';
+import { ImgWrapper, CollectButton, SongListWrapper, BgLayer } from "./style";
+import Header from "../../baseUI/header";
+import Scroll from "../../baseUI/scroll";
+import SongsList from "../SongsList";
+import { connect } from 'react-redux';
+import Loading from "./../../baseUI/loading";
+import { getSingerInfo, changeEnterLoading } from "./store/actionCreators";
+import MusicNote from "../../baseUI/music-note";
+import { useParams, useNavigate } from 'react-router-dom';
 
 function Singer(props) {
-  const [showStatus, setShowStatus] = useState(true);
-  const navigate = useNavigate();
   const { id } = useParams();
+  const navigate = useNavigate();
+  const initialHeight = useRef(0);
+  const [showStatus, setShowStatus] = useState(true);
+
+  const { 
+    artist: immutableArtist, 
+    songs: immutableSongs, 
+    loading,
+    songsCount
+  } = props;
+  
+  const { getSingerDataDispatch } = props;
+  
+  const artist = immutableArtist.toJS();
+  const songs = immutableSongs.toJS();
+
   const collectButton = useRef();
   const imageWrapper = useRef();
   const songScrollWrapper = useRef();
   const songScroll = useRef();
   const header = useRef();
   const layer = useRef();
-  const initialHeight = useRef(0); // 图片初始高度
-  const OFFSET = 5; // 往上偏移的尺寸，露出圆角
-  const { 
-    artist: immutableArtist, 
-    songs: immutableSongs, 
-    loading,
-  } = props;
-  const { getSingerDataDispatch } = props;
-  const artist = immutableArtist.toJS();
-  const songs = immutableSongs.toJS();
-  const setShowStatusFalse = useCallback(() => {
-    setShowStatus(false);
+  const musicNoteRef = useRef();
+
+  //往上偏移的尺寸，露出圆角
+  const OFFSET = 5;
+  
+  useEffect(() => {
+    getSingerDataDispatch(id);
+    let h = imageWrapper.current.offsetHeight;
+    initialHeight.current = h;
+    songScrollWrapper.current.style.top = `${h - OFFSET}px`;
+    //把遮罩先放在下面，以裹住歌曲列表
+    layer.current.style.top = `${h - OFFSET}px`;
+    songScroll.current.refresh();
+    // eslint-disable-next-line
   }, []);
 
   const handleScroll = useCallback(pos => {
@@ -76,16 +91,13 @@ function Singer(props) {
     }
   }, [])
 
-  useEffect(() => {
-    getSingerDataDispatch(id);
-    let h = imageWrapper.current.offsetHeight;
-    songScrollWrapper.current.style.top = `${h - OFFSET}px`;
-    initialHeight.current = h;
-    // 把遮罩先放在下面，以裹住歌曲列表
-    layer.current.style.top = `${h - OFFSET}px`;
-    songScroll.current.refresh();
-    //eslint-disable-next-line
+  const setShowStatusFalse = useCallback(() => {
+    setShowStatus(false);
   }, []);
+
+  const musicAnimation = (x, y) => {
+    musicNoteRef.current.startAnimation({ x, y });
+  };
 
   return (
     <CSSTransition
@@ -96,46 +108,44 @@ function Singer(props) {
       unmountOnExit
       onExited={() => navigate(`/singers`)}
     >
-      <Container>
+      <Container play={songsCount}>
         <Header
           handleClick={setShowStatusFalse}
           title={artist.name}
           ref={header}
-        />
-        
+        ></Header>
         <ImgWrapper ref={imageWrapper} bgUrl={artist.picUrl}>
           <div className="filter"></div>
         </ImgWrapper>
-        
         <CollectButton ref={collectButton}>
           <i className="iconfont">&#xe62d;</i>
           <span className="text">收藏</span>
         </CollectButton>
-
         <BgLayer ref={layer}></BgLayer>
-
         <SongListWrapper ref={songScrollWrapper}>
           <Scroll ref={songScroll} onScroll={handleScroll}>
             <SongsList
               songs={songs}
               showCollect={false}
+              musicAnimation={musicAnimation}
             ></SongsList>
           </Scroll>
         </SongListWrapper>
-
         { loading ? (<Loading></Loading>) : null}
+        <MusicNote ref={musicNoteRef}></MusicNote>
       </Container>
     </CSSTransition>
   )
 }
 
-// 映射 Redux 全局的 state 到组件的 props 上
+// 映射Redux全局的state到组件的props上
 const mapStateToProps = state => ({
   artist: state.getIn(["singerInfo", "artist"]),
   songs: state.getIn(["singerInfo", "songsOfArtist"]),
   loading: state.getIn(["singerInfo", "loading"]),
+  songsCount: state.getIn(['player', 'playList']).size
 });
-// 映射 dispatch 到 props 上
+// 映射dispatch到props上
 const mapDispatchToProps = dispatch => {
   return {
     getSingerDataDispatch(id) {
@@ -145,5 +155,5 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-// 将 ui 组件包装成容器组件
+// 将ui组件包装成容器组件
 export default connect(mapStateToProps,mapDispatchToProps)(React.memo(Singer));

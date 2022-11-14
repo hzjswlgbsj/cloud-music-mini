@@ -1,19 +1,18 @@
-import styled from'styled-components';
+import styled from 'styled-components';
 import style from '../../assets/global-style';
 
 export const SongList = styled.div`
   border-radius: 10px;
   opacity: 0.98;
-  // 注意在这里背景改为自配置参数控制
-  ${props => props.showBackground ? `background: ${style["highlight-background-color"]}`: ""}
-  .first_line {
+  ${props => props.showBackground ? `background: ${style["highlight-background-color"]};`: ""}
+  .first_line{
     box-sizing: border-box;
     padding: 10px 0;
     margin-left: 10px;
     position: relative;
     justify-content: space-between;
     border-bottom: 1px solid ${style["border-color"]};
-    .play_all {
+    .play_all{
       display: inline-block;
       line-height: 24px;
       color: ${style["font-color-desc"]};
@@ -22,11 +21,11 @@ export const SongList = styled.div`
         margin-right: 10px;
         vertical-align: top;
       }
-      .sum {
+      .sum{
         font-size: ${style["font-size-s"]};
         color: ${style["font-color-desc-v2"]};
       }
-      >span {
+      >span{
         vertical-align: top;
       }
     }
@@ -47,12 +46,12 @@ export const SongList = styled.div`
         font-size: 10px;
         margin: 0 5px 0 10px;
       }
-      span {
+      span{
         font-size: 14px;
         line-height: 34px;
       }
     }
-    .isCollected {
+    .isCollected{
       display: flex;
       background: ${style["background-color"]};
       color: ${style["font-color-desc"]};
@@ -60,18 +59,18 @@ export const SongList = styled.div`
 }
 `
 export const SongItem = styled.ul`
-  >li {
+  >li{
     display: flex;
     height: 60px;
     align-items: center;  
-    .index {
+    .index{
       flex-basis: 60px;
       width: 60px;
       height: 60px;
       line-height: 60px;
       text-align: center;
     }
-    .info {
+    .info{
       box-sizing: border-box;
       flex: 1;
       display: flex;
@@ -81,13 +80,13 @@ export const SongItem = styled.ul`
       justify-content: space-around;
       border-bottom: 1px solid ${style["border-color"]};
       ${style.noWrap()}
-      >span {
+      >span{
         ${style.noWrap()}
       }
-      >span:first-child {
+      >span:first-child{
         color: ${style["font-color-desc"]};
       }
-      >span:last-child {
+      >span:last-child{
         font-size: ${style["font-size-s"]};
         color: #bba8a8;
       }
