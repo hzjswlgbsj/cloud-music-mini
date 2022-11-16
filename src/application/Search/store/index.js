@@ -1,48 +1,5 @@
-import { fromJS } from 'immutable';
-import { getRankListRequest } from '../../../api/request';
+import reducer from './reducer'
+import * as actionCreators from './actionCreators'
+import * as constants from './constants'
 
-//constants
-export const CHANGE_RANK_LIST = 'home/rank/CHANGE_RANK_LIST';
-export const CHANGE_LOADING = 'home/rank/CHANGE_LOADING';
-
-// actionCrreator
-const changeRankList = (data) => ({
-  type: CHANGE_RANK_LIST,
-  data: fromJS(data)
-})
-
-const changeLoading = (data) => ({
-  type: CHANGE_LOADING,
-  data
-})
-
-export const getRankList = () => {
-  return dispatch => {
-    getRankListRequest().then(data => {
-      let list = data && data.list;
-      dispatch(changeRankList(list));
-      dispatch(changeLoading(false));
-    }).catch((e) => {
-      console.log('获取排名失败', e)
-    })
-  }
-}
-
-// reducer
-const defaultState = fromJS({
-  rankList: [],
-  loading: true
-})
-
-const reducer = (state = defaultState, action) => {
-  switch(action.type) {
-    case CHANGE_RANK_LIST:
-      return state.set('rankList', action.data);
-    case CHANGE_LOADING:
-      return state.set('loading', action.data);
-    default:
-      return state;
-  }
-}
-
-export { reducer };
+export { reducer, actionCreators, constants };

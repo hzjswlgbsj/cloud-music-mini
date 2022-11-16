@@ -54,6 +54,12 @@ const router = createBrowserRouter([
         exact: true,
         key: "search",
         element: <Search />,
+      },
+      {
+        path: "/album/:id",
+        exact: true,
+        key: "album",
+        element: <Album />
       }
     ]
   }

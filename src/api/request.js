@@ -30,3 +30,18 @@ export const getSingerInfoRequest = id => {
 export const getLyricRequest = id => {
   return axiosInstance.get(`/lyric?id=${id}`);
 };
+export const getHotKeyWordsRequest = () => {
+  return axiosInstance.get(`/search/hot`);
+};
+
+export const getSuggestListRequest = query => {
+  return axiosInstance.get(`/search/suggest?keywords=${query}`);
+};
+
+export const getResultSongsListRequest = query => {
+  return axiosInstance.get(`/search?keywords=${query}`);
+};
+
+export const getSongDetailRequest = id => {
+  return axiosInstance.get(`/song/detail?ids=${id}`);
+};
