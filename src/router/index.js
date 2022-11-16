@@ -7,6 +7,7 @@ import Singers from '../application/Singers';
 import Rank from '../application/Rank';
 import Album from '../application/Album';
 import Singer from '../application/Singer';
+import Search from '../application/Search';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,12 @@ const router = createBrowserRouter([
             element: <Album />
           }
         ]
+      },
+      {
+        path: "/search",
+        exact: true,
+        key: "search",
+        element: <Search />,
       }
     ]
   }
