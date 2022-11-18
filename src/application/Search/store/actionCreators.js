@@ -42,7 +42,9 @@ export const getSuggestList = (query) => {
     getResultSongsListRequest(query).then(data => {
       if (!data) return;
       let res = data.result.songs || [];
-      dispatch(changeResultSongs(res));
+      if (res && res.length) {
+        dispatch(changeResultSongs(res));
+      }
       dispatch(changeEnterLoading(false));// 关闭 loading
     })
   }

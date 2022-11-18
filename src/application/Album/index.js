@@ -11,10 +11,9 @@ import { getAlbumList, changeEnterLoading } from './store/actionCreators';
 import Loading from '../../baseUI/loading';
 import SongsList from '../SongsList';
 import MusicNote from "../../baseUI/music-note";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function Album(props) {
-  const navigate = useNavigate();
   const { id } = useParams();
 
   const [showStatus, setShowStatus] = useState(true);
@@ -75,12 +74,15 @@ function Album(props) {
         </div>
         <div className="desc_wrapper">
           <div className="title">{currentAlbum.name}</div>
-          <div className="person">
-            <div className="avatar">
-              <img src={currentAlbum.creator.avatarUrl} alt="" />
+          {
+            currentAlbum.creator &&
+            <div className="person">
+              <div className="avatar">
+                <img src={currentAlbum.creator.avatarUrl} alt="" />
+              </div>
+              <div className="name">{currentAlbum.creator.nickname}</div>
             </div>
-            <div className="name">{currentAlbum.creator.nickname}</div>
-          </div>
+          }
         </div>
       </TopDesc>
     )
@@ -116,7 +118,7 @@ function Album(props) {
       classNames="fly"
       appear={true}
       unmountOnExit
-      onExited={() => navigate(`/recommend`)}
+      onExited={() => window.history.back(-1)}
     >
       <Container play={songsCount}>
         <Header ref={headerEl} title={title} handleClick={handleBack} isMarquee={isMarquee}></Header>

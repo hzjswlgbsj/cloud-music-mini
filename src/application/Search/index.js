@@ -84,9 +84,15 @@ function Search(props) {
             return (
               <ListItem key={item.accountId+""+index} onClick={() => navigate(`/album/${item.id}`)}>
                 <div className="img_wrapper">
-                  <LazyLoad placeholder={<img width="100%" height="100%" src={require('./music.png')} alt="music"/>}>
-                    <img src={item.coverImgUrl} width="100%" height="100%" alt="music"/>
-                  </LazyLoad>
+                  {
+                    !item.coverImgUrl && <img width="100%" height="100%" src={require('./music.png')} alt="music"/>
+                  }
+                  {
+                    item.coverImgUrl &&
+                    <LazyLoad placeholder={<img width="100%" height="100%" src={require('./music.png')} alt="music"/>}>
+                      <img src={item.coverImgUrl} width="100%" height="100%" alt="music"/>
+                    </LazyLoad>
+                  }
                 </div>
                 <span className="name">歌单: {item.name}</span>
               </ListItem>
@@ -152,7 +158,7 @@ function Search(props) {
       appear={true}
       classNames="fly"
       unmountOnExit
-      onExited={() => navigate(`/recommend`)}
+      onExited={() => window.history.back(-1)}
     >
     <Container play={songsCount}>
       <div className="search_box_wrapper">
