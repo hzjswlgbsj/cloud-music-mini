@@ -8,10 +8,12 @@ import { Content } from './style';
 import { forceCheck } from 'react-lazyload';
 import Loading from '../../baseUI/loading/index';
 import { Outlet } from "react-router";
+import { useNavigate } from 'react-router-dom';
 
 function Videos(props){
   const { bannerList, recommendList, enterLoading } = props;
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
+  const navigate = useNavigate();
 
   useEffect(() => {
     // 如果页面有数据，则不发请求
@@ -36,7 +38,13 @@ function Videos(props){
     <Content>
       <Scroll className="list" onScroll={forceCheck}>
         <div>
-          {bannerListJS.length > 0 && <Slider bannerList={bannerListJS}></Slider>}
+          {
+            bannerListJS.length > 0 &&
+            <Slider
+              bannerList={bannerListJS}
+              handleClick={(id) => navigate(`/videos/${id}`)}
+            />
+          }
           <VideoList recommendList={recommendListJS}></VideoList>
         </div>
       </Scroll>

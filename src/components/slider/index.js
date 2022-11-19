@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 const Slider = (props) => {
-  const { bannerList } = props
+  const { bannerList, handleClick } = props
   return (
     <SliderContainer>
       <div className="before"></div>
@@ -27,7 +27,13 @@ const Slider = (props) => {
               bannerList.map((item, index) => {
                 return (
                   <SwiperSlide key={index}>
-                    <img src={item.imageUrl} width='100%' height='100%' alt='suggest' />
+                    <img
+                      src={item.imageUrl}
+                      width='100%'
+                      height='100%'
+                      alt='suggest'
+                      onClick={() => handleClick(item.id)}
+                    />
                   </SwiperSlide>
                 )
               })

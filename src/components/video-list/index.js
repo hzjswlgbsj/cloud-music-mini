@@ -10,8 +10,6 @@ import { useNavigate } from 'react-router-dom';
 
 function RecommendList(props) {
   const navigate = useNavigate();
-  console.log(11111111, props.recommendList)
-
   return (
     <ListWrapper>
       <h1 className="title"> 推荐视频 </h1>
@@ -19,7 +17,7 @@ function RecommendList(props) {
         {
           props.recommendList.map((item, index) => {
             return (
-              <ListItem key={item.id + index} onClick={() => navigate(`/recommend/${item.id}`)}>
+              <ListItem key={item.id + index} onClick={() => navigate(`/videos/${item.id}`)}>
                 <div className="img_wrapper">
                   <div className="decorate"></div>
                   {/* 加此参数可以减小请求的图片资源大小 */}

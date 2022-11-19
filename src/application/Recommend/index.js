@@ -8,10 +8,12 @@ import { Content } from './style';
 import { forceCheck } from 'react-lazyload';
 import Loading from '../../baseUI/loading/index';
 import { Outlet } from "react-router";
+import { useNavigate } from 'react-router-dom';
 
 function Recommend(props){
   const { bannerList, recommendList, enterLoading } = props;
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
+  const navigate = useNavigate();
 
   useEffect(() => {
     // 如果页面有数据，则不发请求
@@ -32,7 +34,14 @@ function Recommend(props){
     <Content>
       <Scroll className="list" onScroll={forceCheck}>
         <div>
-          <Slider bannerList={bannerListJS}></Slider>
+          <Slider
+            bannerList={bannerListJS}
+            handleClick={(id) => {
+              if (id) {
+                navigate(`/recommend/${id}`)
+              }
+            }}
+          />
           <RecommendList recommendList={recommendListJS}></RecommendList>
         </div>
       </Scroll>
