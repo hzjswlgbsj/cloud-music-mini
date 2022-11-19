@@ -1,0 +1,3 @@
+export const CHANGE_BANNER = 'videos/CHANGE_BANNER';
+export const CHANGE_RECOMMEND_LIST = 'videos/RECOMMEND_LIST';
+export const CHANGE_ENTER_LOADING = 'videos/CHANGE_ENTER_LOADING';

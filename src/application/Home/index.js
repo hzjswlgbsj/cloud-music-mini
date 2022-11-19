@@ -11,13 +11,14 @@ function Home(props) {
     <div>
       <Top>
         <span className="iconfont menu">&#xe65c;</span>
-        <span className="title">WebApp</span>
+        <span className="title">云音乐</span>
         <span className="iconfont search" onClick={() => navigate('/search')}>&#xe62b;</span>
       </Top>
       <Tab>
-        <NavLink to="/recommend" className={({ isActive }) => isActive ? 'red' : 'blue'}><TabItem><span > 推荐 </span></TabItem></NavLink>
-        <NavLink to="/singers" className={({ isActive }) => isActive ? 'red' : 'blue'}><TabItem><span > 歌手 </span></TabItem></NavLink>
-        <NavLink to="/rank" className={({ isActive }) => isActive ? 'red' : 'blue'}><TabItem><span > 排行榜 </span></TabItem></NavLink>
+        <NavLink to="/recommend"><TabItem><span> 推荐 </span></TabItem></NavLink>
+        <NavLink to="/singers"><TabItem><span> 歌手 </span></TabItem></NavLink>
+        <NavLink to="/rank"><TabItem><span> 排行榜 </span></TabItem></NavLink>
+        <NavLink to="/videos"><TabItem><span> 视频 </span></TabItem></NavLink>
       </Tab>
       <Outlet />
       <Player></Player>

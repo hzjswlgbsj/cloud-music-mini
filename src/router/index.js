@@ -8,6 +8,8 @@ import Rank from '../application/Rank';
 import Album from '../application/Album';
 import Singer from '../application/Singer';
 import Search from '../application/Search';
+import Videos from '../application/Videos';
+import Video from '../application/Video';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,16 @@ const router = createBrowserRouter([
           {
             path: "/rank/:id",
             element: <Album />
+          }
+        ]
+      },
+      {
+        path: "videos",
+        element: <Videos />,
+        children: [
+          {
+            path: "/videos/:id",
+            element: <Video />
           }
         ]
       },

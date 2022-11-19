@@ -46,24 +46,29 @@ export const getSongDetailRequest = id => {
   return axiosInstance.get(`/song/detail?ids=${id}`);
 };
 
-// 获取推荐视频
-export const getPromotedVideos = offset => {
-  return axiosInstance.get(`/video/timeline/recommend?offset=${offset}`);
+// 获取推荐mv
+export const getRecommendVideos = () => {
+  return axiosInstance.get(`/personalized/mv`);
 };
 
-// 获取视频详情
-export const getVideoDetail = id => {
-  return axiosInstance.get(`/video/detail?id=${id}`);
+// 获取mv排行
+export const getTopVideos = offset => {
+  return axiosInstance.get(`/top/mv?offset=${offset}`);
 };
 
-// 获取视频播放地址
+// 获取mv详情
+export const getVideoDetail = mvid => {
+  return axiosInstance.get(`/mv/detail?mvid=${mvid}`);
+};
+
+// 获取mv播放地址
 export const getVideoUrl = id => {
-  return axiosInstance.get(`/video/url?id=${id}`);
+  return axiosInstance.get(`/mv/url?id=${id}&r=1080`);
 };
 
-// 获取视频点赞转发评论数数据
-export const getVideoLikesForwardsComments = id => {
-  return axiosInstance.get(`/video/detail/info?id=${id}`);
+// 获取mv点赞转发评论数数据
+export const getVideoLikesForwardsComments = mvid => {
+  return axiosInstance.get(`/mv/detail/info?mvid=${mvid}`);
 };
 
 // 获取相关视频
