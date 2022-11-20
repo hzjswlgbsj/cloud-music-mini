@@ -45,7 +45,7 @@ function Videos(props){
               handleClick={(id) => navigate(`/videos/${id}`)}
             />
           }
-          <VideoList recommendList={recommendListJS}></VideoList>
+          <VideoList list={recommendListJS}></VideoList>
         </div>
       </Scroll>
       {enterLoading ? <Loading></Loading> : null}

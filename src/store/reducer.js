@@ -7,6 +7,7 @@ import { reducer as singerInfoReducer } from '../application/Singer/store';
 import { reducer as playerReducer } from "../application/Player/store"
 import { reducer as searchReducer } from "../application/Search/store";
 import { reducer as videosReducer } from "../application/Videos/store";
+import { reducer as videoReducer } from "../application/Video/store";
 
 export default combineReducers ({
   recommend: recommendReducer,
@@ -17,4 +18,5 @@ export default combineReducers ({
   player: playerReducer,
   search: searchReducer,
   videos: videosReducer,
+  video: videoReducer,
 });

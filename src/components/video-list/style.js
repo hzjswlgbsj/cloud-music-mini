@@ -15,7 +15,6 @@ export const List = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
 `;
 
 export const ListItem = styled.div`

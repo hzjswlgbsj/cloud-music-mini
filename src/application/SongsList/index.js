@@ -5,13 +5,9 @@ import { changePlayList, changeCurrentIndex, changeSequecePlayList } from './../
 import { connect } from 'react-redux';
 
 const SongsList = React.forwardRef((props, refs)=> {
-
   const { collectCount, showCollect, songs } = props;
-
   const { musicAnimation } = props;
-
   const { changePlayListDispatch, changeCurrentIndexDispatch, changeSequecePlayListDispatch } = props;
-
   const totalCount = songs.length;
 
   const selectItem = (e, index) => {
