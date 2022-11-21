@@ -6,8 +6,8 @@ export const ListWrapper = styled.div`
   .title {
     font-weight: 700;
     padding-left: 6px;
-    font-size: 14px;
-    line-height: 60px;
+    font-size: 16px;
+    line-height: 55px;
   }
 `;
 export const List = styled.div`
@@ -63,5 +63,6 @@ export const ListItem = styled.div`
   .artistName {
     font-size: ${style["font-size-m"]};
     color: ${style["font-color-desc-v2"]};
+    margin-left: 2px;
   }
 `;
