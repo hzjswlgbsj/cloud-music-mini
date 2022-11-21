@@ -1,3 +1,4 @@
+export const CHANGE_URL = 'video/CHANGE_URL';
 export const CHANGE_DETAIL = 'video/CHANGE_DETAIL';
 export const CHANGE_RELATED_VIDEOS = 'video/CHANGE_RELATED_VIDEOS';
 export const CHANGE_ENTER_LOADING = 'video/CHNAGE_ENTER_LOADING';

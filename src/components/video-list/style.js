@@ -19,8 +19,8 @@ export const List = styled.div`
 
 export const ListItem = styled.div`
   position: relative;
-  width: 45%;
-  padding: 6px;
+  width: 46%;
+  padding: 10px 6px;
   .img_wrapper {
     .decorate {
       position: absolute;
@@ -52,13 +52,16 @@ export const ListItem = styled.div`
     }
   }
   .desc {
-      overflow: hidden;
-      margin-top: 2px;
-      padding: 0 2px;
-      height: 40px;
-      text-align: left;
-      font-size: ${style["font-size-s"]};
-      line-height: 1.4;
-      color: ${style["font-color-desc"]};
-    }
+    margin: 2px 0;
+    padding: 0 2px;
+    text-align: left;
+    font-size: ${style["font-size-m"]};
+    line-height: 1.4;
+    color: ${style["font-color-desc"]};
+    ${style.noWrap()}
+  }
+  .artistName {
+    font-size: ${style["font-size-m"]};
+    color: ${style["font-color-desc-v2"]};
+  }
 `;

@@ -21,6 +21,7 @@ const HeaderContainer = styled.div`
   >h1{
     font-size: ${style["font-size-l"]};
     font-weight: 700;
+    ${style.noWrap()}
   }
 `
 // 处理函数组件拿不到ref的问题,所以用forwardRef

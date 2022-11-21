@@ -72,6 +72,6 @@ export const getVideoLikesForwardsComments = mvid => {
 };
 
 // 获取相关视频
-export const getRelatedVideos = id => {
-  return axiosInstance.get(`/related/allvideo?id=${id}`);
+export const getAllMv = limit => {
+  return axiosInstance.get(`/mv/first?limit=${limit}`);
 };

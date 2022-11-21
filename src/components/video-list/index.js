@@ -5,7 +5,6 @@ import {
   List
 } from './style';
 import { getCount } from "../../api/utils";
-import LazyLoad from "react-lazyload";
 import { useNavigate } from 'react-router-dom';
 
 function VideoList(props) {
@@ -21,15 +20,14 @@ function VideoList(props) {
                 <div className="img_wrapper">
                   <div className="decorate"></div>
                   {/* 加此参数可以减小请求的图片资源大小 */}
-                  <LazyLoad placeholder={<img width="100%" height="100%" src={require("./music.png").default} alt="music"/>}>
-                    <img src={item.cover} width="100%" height="100%" alt="music"/>
-                  </LazyLoad>
+                  <img width="100%" height="100%" src={item.cover ? item.cover : require('./music.png')} alt="music"/>
                   <div className="play_count">
                     <i className="iconfont play">&#xe644;</i>
                     <span className="count">{getCount(item.playCount)}</span>
                   </div>
                 </div>
                 <div className="desc">{item.name}</div>
+                <div className="artistName">{item.artistName}</div>
               </ListItem>
             )
           })

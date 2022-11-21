@@ -43,10 +43,11 @@ export const VideoListWrapper = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  >div {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    overflow: visible;
+  height: calc(100% - 240px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  ::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
   }
 `
