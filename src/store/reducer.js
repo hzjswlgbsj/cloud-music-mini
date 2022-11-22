@@ -9,7 +9,7 @@ import { reducer as searchReducer } from "../application/Search/store";
 import { reducer as videosReducer } from "../application/Videos/store";
 import { reducer as videoReducer } from "../application/Video/store";
 
-export default combineReducers ({
+export default combineReducers({
   recommend: recommendReducer,
   singers: singersReducer,
   rank: rankReducer,
